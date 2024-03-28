@@ -1,0 +1,167 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* GRID SETUP */
+
+.container {
+	height: 100dvh;
+	width: 100vw;
+	display: grid;
+	grid-template-rows: 75px 1fr 25px;
+}
+
+.header {
+	border-bottom: black 1px solid;
+}
+.body {
+	display: grid;
+	grid-template-rows: 1fr;
+	overflow: hidden;
+	background-color: gold;
+}
+
+.content {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 200px 1fr;
+	overflow: hidden;
+	background-color: blue;
+	overflow-y: scroll;
+}
+
+.sidebar {
+	background-color: red;
+}
+
+.footer {
+	background-color: rgb(0, 0, 115);
+	min-height: 25px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.footer p {
+	color: white;
+	margin-left: 10px;
+}
+
+/* HEADER & NAVBAR */
+
+.header nav {
+	border-top: solid rgb(0, 0, 115) 1px;
+	width: 100%;
+	height: 35px;
+	margin: 0;
+	background-color: rgb(0, 0, 115);
+}
+
+.header .pageName {
+	height: 40px;
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+h2 {
+	margin-top: 10px;
+}
+
+h1 {
+	margin: 0;
+	padding: 5px 0;
+	color: rgb(0, 0, 115);
+}
+
+h3 {
+	text-align: center;
+	margin: 2.5px 0;
+}
+
+.header nav ul {
+	display: flex;
+	justify-content: flex-start;
+	margin: 0;
+	height: 100%;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+.header nav ul li {
+	padding: 0 10px;
+	margin: auto 0;
+	font-size: 15px;
+	color: white;
+}
+
+.header nav ul li a {
+	color: white;
+	text-decoration: none;
+}
+
+/* flassh cards */
+
+.flashCardContainer {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 50px auto;
+	background-color: bisque;
+	width: 65%;
+}
+
+.flashCard {
+	height: 125px;
+	width: 125px;
+	background-color: green;
+	display: flex;
+	align-items: center;
+}
+
+.flashCard p {
+	color: white;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+.newWord {
+	display: flex;
+	justify-content: center;
+	background-color: blueviolet;
+	width: 350px;
+	margin: 0 auto;
+	flex-direction: column;
+}
+
+div form {
+	margin: 10px;
+}
+
+label {
+	display: block;
+}
+
+input {
+	margin-bottom: 5px;
+}
+
+button {
+	margin: 0 auto;
+	display: block;
+	padding: 1px;
+	width: 100px;
+}
