@@ -15,7 +15,6 @@ const App: FC = () => {
 					<NavBar />
 				</header>
 			</div>
-
 			<div className="body">
 				<div className="content">
 					<div className="sidebar"></div>

@@ -1,32 +1,74 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import Cards from "./Cards";
 
 const FlashCards: FC = () => {
-	// const [isFlipped, SetIsFlipped] = useState<boolean>(false);
 	const [newWordEnglish, setNewWordEnglish] = useState<string>("");
 	const [newWordTL, setNewWordTL] = useState<string>("");
 	const [wordList, setWordList] = useState<[string, string][]>([
-		["O Leão", "The Lion"],
-		["O Tigre", "The Tiger"],
-		["A Tartaruga", "The Turtle"],
-		["A Formiga", "The Ant"],
-		["O Elefante", "The Elephant"],
+		["O Leão", "Lion"],
+		["O Tigre", "Tiger"],
+		["A Tartaruga", "Turtle"],
+		["A Formiga", "Ant"],
+		["O Elefante", "Elephant"],
 	]);
+	const [cardsCount, setCardsCount] = useState<number>();
 
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+		event.preventDefault();
+		if (newWordEnglish && newWordTL) {
+			setWordList((currentWordList): [string, string][] => {
+				return [...currentWordList, [newWordTL, newWordEnglish]];
+			});
+			setNewWordEnglish("");
+			setNewWordTL("");
+		}
+	};
+
+	useEffect(() => {
+		setCardsCount(wordList.length);
+	}, [wordList]);
+
+	const handleOnChangeEnglish = (
+		event: React.ChangeEvent<HTMLInputElement>
+	): void => {
+		setNewWordEnglish(event.currentTarget.value);
+	};
+
+	const handleOnChangeTarget = (
+		event: React.ChangeEvent<HTMLInputElement>
+	): void => {
+		setNewWordTL(event.currentTarget.value);
+	};
+
+	handleOnChangeEnglish;
 	return (
 		<>
 			<h1>My Flash Cards</h1>
 			<div className="newWord">
 				<h3>Add New Flash Card</h3>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<label htmlFor="englishWord">
 						Word in English:
-						<input type="text" name="englshWord" id="englshWord"></input>
+						<input
+							type="text"
+							value={newWordEnglish}
+							onChange={handleOnChangeEnglish}
+							name="englshWord"
+							id="englshWord"
+							placeholder="e.g. House"
+						></input>
 					</label>
 					<label htmlFor="targetLWord">
 						Word in target language:
-						<input type="text" name="targetLWord" id="targetLWord"></input>
+						<input
+							value={newWordTL}
+							type="text"
+							onChange={handleOnChangeTarget}
+							name="targetLWord"
+							id="targetLWord"
+							placeholder="e.g. A Casa"
+						></input>
 					</label>
 					<button>Add Card</button>
 				</form>
@@ -36,6 +78,7 @@ const FlashCards: FC = () => {
 					<Cards key={index} words={words} />
 				))}
 			</ul>
+			<h3 className="total">Total Flash Cards: {cardsCount}</h3>
 		</>
 	);
 };

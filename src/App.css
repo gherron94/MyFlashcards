@@ -27,7 +27,7 @@
 	display: grid;
 	grid-template-rows: 1fr;
 	overflow: hidden;
-	background-color: gold;
+	/* background-color: gold; */
 }
 
 .content {
@@ -35,12 +35,13 @@
 	grid-template-rows: 1fr;
 	grid-template-columns: 200px 1fr;
 	overflow: hidden;
-	background-color: blue;
+	/* background-color: blue; */
 	overflow-y: scroll;
 }
 
 .sidebar {
-	background-color: red;
+	/* background-color: red; */
+	border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .footer {
@@ -118,33 +119,47 @@ ul {
 
 .flashCardContainer {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: flex-start;
+	flex-flow: wrap;
 	margin: 50px auto;
-	background-color: bisque;
+	/* background-color: bisque; */
+	width: 1035px;
+	column-gap: 5px;
+}
+
+.flashCardContainer::after {
+	content: "";
 	width: 65%;
 }
 
 .flashCard {
 	height: 125px;
 	width: 125px;
-	background-color: green;
+	background-color: gainsboro;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
+	border: 1px black solid;
+	border-radius: 10px;
+	margin: 2.5px 0;
 }
 
 .flashCard p {
-	color: white;
+	/* color: white; */
 	margin: 0 auto;
 	font-size: 20px;
+	cursor: pointer;
 }
 
 .newWord {
 	display: flex;
 	justify-content: center;
-	background-color: blueviolet;
+	background-color: ghostwhite;
 	width: 350px;
 	margin: 0 auto;
 	flex-direction: column;
+	border: 1px black solid;
+	border-radius: 5px;
 }
 
 div form {

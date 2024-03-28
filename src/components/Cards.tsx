@@ -10,12 +10,12 @@ const Cards: FC<CardsProps> = ({ words }) => {
 	return (
 		<li
 			className="flashCard"
-			key={words[0]}
+			key={words[1]}
 			onClick={() => {
 				SetIsFlipped(!isFlipped);
 			}}
 		>
-			{isFlipped ? <p>{words[0]}</p> : <p>{words[1]}</p>}
+			{isFlipped ? <p>{words[1]}</p> : <p>{words[0]}</p>}
 		</li>
 	);
 };
