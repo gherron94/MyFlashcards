@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-
 import Cards from "./Cards";
 
 const FlashCards: FC = () => {
@@ -13,6 +12,7 @@ const FlashCards: FC = () => {
 		["O Elefante", "Elephant"],
 	]);
 	const [cardsCount, setCardsCount] = useState<number>();
+	const [isFlipped, SetIsFlipped] = useState<boolean>(false);
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
 		event.preventDefault();
@@ -73,11 +73,26 @@ const FlashCards: FC = () => {
 					<button>Add Card</button>
 				</form>
 			</div>
-			<ul className="flashCardContainer">
-				{wordList.map((words, index) => (
-					<Cards key={index} words={words} />
-				))}
-			</ul>
+			<div
+				onClick={() => {
+					SetIsFlipped(!isFlipped);
+				}}
+			>
+				Change to target language
+			</div>{" "}
+			{isFlipped ? (
+				<ul className="flashCardContainer">
+					{wordList.map((words, index) => (
+						<Cards key={index} firstCard={words[0]} secondCard={words[1]} />
+					))}
+				</ul>
+			) : (
+				<ul className="flashCardContainer">
+					{wordList.map((words, index) => (
+						<Cards key={index} firstCard={words[1]} secondCard={words[0]} />
+					))}
+				</ul>
+			)}
 			<h3 className="total">Total Flash Cards: {cardsCount}</h3>
 		</>
 	);

@@ -27,7 +27,7 @@ const App: FC = () => {
 				</div>
 			</div>
 			<footer className="footer">
-				<p>© 2024 Language app</p>
+				<p>© 2024 Language App</p>
 			</footer>
 		</div>
 	);
