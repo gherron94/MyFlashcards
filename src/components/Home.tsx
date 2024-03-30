@@ -3,7 +3,7 @@ import { FC } from "react";
 const Home: FC = () => {
 	return (
 		<>
-			<h1>Welcome to language-app</h1>
+			<h1>Welcome to Language App</h1>
 		</>
 	);
 };

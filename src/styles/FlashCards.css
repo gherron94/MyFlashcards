@@ -1,0 +1,132 @@
+/* flash cards */
+
+.flashCardFlexContainer {
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+	margin: 0 auto;
+	background-color: bisque;
+	width: 80%;
+	column-gap: 5px;
+}
+
+.flashCardFlexContainer::after {
+	content: "";
+	width: 125px;
+}
+
+.flashCardContainer {
+	display: flex;
+	flex-flow: column;
+	/* background-color: salmon; */
+}
+
+.flashCard {
+	height: 125px;
+	width: 125px;
+	background-color: transparent;
+	perspective: 1000px;
+	margin: 2.5px 0;
+	cursor: pointer;
+}
+
+.flashCard-flip {
+	.flashCardInner {
+		transform: rotateY(180deg);
+	}
+}
+
+.flashCardInner {
+	border-radius: 10px;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: teal;
+	text-align: center;
+	transition: transform 1s;
+	transform-style: preserve-3d;
+}
+
+.flash-card-TL,
+.flash-card-English {
+	display: flex;
+	border-radius: 10px;
+	align-items: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+}
+
+.flash-card-TL {
+	background-color: blue;
+}
+
+.flash-card-English {
+	background-color: olive;
+	transform: rotateY(180deg);
+}
+
+.flashCard p {
+	color: white;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+/* Add Card */
+
+.newWord {
+	display: flex;
+	justify-content: center;
+	background-color: ghostwhite;
+	width: 350px;
+	margin: 0 auto;
+	flex-direction: column;
+	border: 1px black solid;
+	border-radius: 5px;
+}
+
+div form {
+	margin: 10px;
+}
+
+label {
+	display: block;
+}
+
+input {
+	margin-bottom: 5px;
+}
+
+button {
+	margin: 0 auto;
+	display: block;
+	padding: 1px;
+	width: 100px;
+}
+
+.deleteButton {
+	width: 75px;
+}
+
+/* Edit/Delete Card */
+
+.editCards {
+	width: 200px;
+	border: 1px solid black;
+	margin: 5px auto;
+	padding: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.editCards:hover {
+	background-color: blue;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}

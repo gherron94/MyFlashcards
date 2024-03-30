@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./styles";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import FlashCards from "./components/FlashCards";

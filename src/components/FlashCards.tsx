@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Words } from "../types";
 import axios from "axios";
 import Cards from "./Cards";
