@@ -26,7 +26,7 @@ const App: FC = () => {
 						</Routes>
 					</main>
 					<footer className="footer">
-						<p>© 2024 Language Appa</p>
+						<p>© 2024 Language App</p>
 					</footer>
 				</div>
 			</div>

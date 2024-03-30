@@ -9,7 +9,10 @@ const NavBar: FC = () => {
 					<NavLink to="/">Home</NavLink>
 				</li>
 				<li>
-					<NavLink to="/flash-cards">My Flash Cards</NavLink>
+					<NavLink to="/flash-cards">Flash Cards</NavLink>
+				</li>
+				<li className="currentUser">
+					<NavLink to="/"> Sign In</NavLink>
 				</li>
 			</ul>
 		</nav>

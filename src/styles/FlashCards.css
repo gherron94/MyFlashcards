@@ -5,9 +5,9 @@
 	justify-content: center;
 	flex-flow: row wrap;
 	margin: 0 auto;
-	background-color: bisque;
+	/* background-color: bisque; */
 	width: 80%;
-	column-gap: 5px;
+	column-gap: 15px;
 }
 
 .flashCardFlexContainer::after {
@@ -26,7 +26,7 @@
 	width: 125px;
 	background-color: transparent;
 	perspective: 1000px;
-	margin: 2.5px 0;
+	margin: 7.5px 0;
 	cursor: pointer;
 }
 
@@ -43,7 +43,7 @@
 	width: 100%;
 	background-color: teal;
 	text-align: center;
-	transition: transform 1s;
+	transition: transform 0.85s;
 	transform-style: preserve-3d;
 }
 
@@ -60,15 +60,21 @@
 }
 
 .flash-card-TL {
-	background-color: blue;
+	background-color: rgb(0, 0, 115);
 }
 
 .flash-card-English {
-	background-color: olive;
+	background-color: rgb(0, 0, 115);
 	transform: rotateY(180deg);
 }
 
-.flashCard p {
+.flash-card-TL p {
+	color: white;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+.flash-card-English p {
 	color: white;
 	margin: 0 auto;
 	font-size: 20px;
