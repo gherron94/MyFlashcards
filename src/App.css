@@ -144,6 +144,12 @@ ul {
 	cursor: pointer;
 }
 
+.flashCard-flip {
+	.flashCardInner {
+		transform: rotateY(180deg);
+	}
+}
+
 .flashCardInner {
 	border-radius: 10px;
 	position: relative;
@@ -151,13 +157,15 @@ ul {
 	width: 100%;
 	background-color: teal;
 	text-align: center;
-	transition: transform 0.8s;
+	transition: transform 1s;
 	transform-style: preserve-3d;
 }
 
-.flashCard:hover .flashCardInner {
-	transform: rotateY(180deg);
-}
+/* @media (pointer: fine) {
+	.flashCard:hover .flashCardInner {
+		transform: rotateY(180deg);
+	}
+} */
 
 .flash-card-TL,
 .flash-card-English {
@@ -223,15 +231,20 @@ button {
 .editCards {
 	width: 200px;
 	border: 1px solid black;
-	margin-bottom: 5px;
+	margin: 5px auto;
 	padding: 5px;
-	margin-left: 5px;
 	cursor: pointer;
+	text-align: center;
 }
 
 .editCards:hover {
 	background-color: blue;
 	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
 /* siderbar */

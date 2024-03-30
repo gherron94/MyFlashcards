@@ -3,12 +3,14 @@ import { NavLink } from "react-router-dom";
 import { Words } from "../types";
 import axios from "axios";
 import Cards from "./Cards";
+import AddCards from "./AddCards";
 
 const FlashCards: FC = () => {
 	const [wordList, setWordList] = useState<Words[]>([]);
 	const [cardsCount, setCardsCount] = useState<number>();
 	const [isFlipped, SetIsFlipped] = useState<boolean>(false);
 	const [isDeleteSelected, setIsDeleteSelected] = useState<boolean>(false);
+	const [addCard, setAddCard] = useState<boolean>(false);
 
 	useEffect(() => {
 		axios
@@ -49,11 +51,15 @@ const FlashCards: FC = () => {
 			>
 				<p>Edit Cards</p>
 			</div>
-			<NavLink to="/new-card">
-				<div className="editCards">
-					<p>Add Card</p>
-				</div>
-			</NavLink>
+			<div
+				className="editCards"
+				onClick={() => {
+					setAddCard(!addCard);
+				}}
+			>
+				<p>Add Card</p>
+			</div>
+			{addCard ? <AddCards setAddCard={setAddCard} addCard={addCard} /> : null}
 			{isFlipped ? (
 				<ul className="flashCardFlexContainer">
 					{wordList.map((words, index) => (

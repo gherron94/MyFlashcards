@@ -1,7 +1,12 @@
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import axios from "axios";
 
-const AddCards: FC = () => {
+interface AddCardProps {
+	addCard: boolean;
+	setAddCard: Dispatch<SetStateAction<boolean>>;
+}
+
+const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
 	const [newWordEnglish, setNewWordEnglish] = useState<string>("");
 	const [newWordTL, setNewWordTL] = useState<string>("");
 
@@ -14,6 +19,7 @@ const AddCards: FC = () => {
 			});
 			setNewWordEnglish("");
 			setNewWordTL("");
+			setAddCard(!addCard);
 		}
 	};
 

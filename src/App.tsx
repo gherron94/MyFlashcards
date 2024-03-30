@@ -4,7 +4,6 @@ import "./App.css";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import FlashCards from "./components/FlashCards";
-import AddCards from "./components/AddCards";
 // import SideBar from "./components/SideBar";
 
 const App: FC = () => {
@@ -24,11 +23,10 @@ const App: FC = () => {
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/flash-cards" element={<FlashCards />} />
-							<Route path="/new-card" element={<AddCards />} />
 						</Routes>
 					</main>
 					<footer className="footer">
-						<p>© 2024 Language App</p>
+						<p>© 2024 Language Appa</p>
 					</footer>
 				</div>
 			</div>

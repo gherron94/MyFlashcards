@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import axios from "axios";
 
 interface CardsProps {
@@ -14,6 +14,7 @@ const Cards: FC<CardsProps> = ({
 	secondCard,
 	isDeleteSelected,
 }) => {
+	const [flip, setFlip] = useState<Boolean>(false);
 	const handleOnClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	): void => {
@@ -26,7 +27,13 @@ const Cards: FC<CardsProps> = ({
 	return (
 		<>
 			<li className="flashCardContainer">
-				<div className="flashCard" key={firstCard}>
+				<div
+					className={flip ? "flashCard flashCard-flip" : "flashCard"}
+					key={firstCard}
+					onClick={() => {
+						setFlip(!flip);
+					}}
+				>
 					<div className="flashCardInner">
 						<div className="flash-card-TL">
 							<p>{firstCard}</p>
