@@ -17,40 +17,38 @@
 	height: 100dvh;
 	width: 100vw;
 	display: grid;
-	grid-template-rows: 75px 1fr 25px;
+	grid-template-rows: 45px 1fr;
 }
 
 .header {
-	border-bottom: black 1px solid;
+	border-bottom: black§ 1px solid;
 }
 .body {
 	display: grid;
-	grid-template-rows: 1fr;
+	grid-template-columns: 1fr;
 	overflow: hidden;
 	/* background-color: gold; */
 }
 
 .content {
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: 200px 1fr;
-	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	/* background-color: blue; */
 	overflow-y: scroll;
 }
 
-.sidebar {
-	/* background-color: red; */
-	border-right: 1px solid rgba(0, 0, 0, 0.5);
-}
-
 .footer {
-	background-color: rgb(0, 0, 115);
+	background-color: rgb(0, 0, 0);
 	min-height: 25px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
+/* .sidebar {
+	background-color: red;
+	border-right: 1px solid rgba(0, 0, 0, 0.5);
+} */
 
 .footer p {
 	color: white;
@@ -60,11 +58,10 @@
 /* HEADER & NAVBAR */
 
 .header nav {
-	border-top: solid rgb(0, 0, 115) 1px;
 	width: 100%;
-	height: 35px;
+	height: 45px;
 	margin: 0;
-	background-color: rgb(0, 0, 115);
+	background-color: rgb(0, 0, 0);
 }
 
 .header .pageName {
@@ -117,19 +114,25 @@ ul {
 
 /* flassh cards */
 
-.flashCardContainer {
+.flashCardFlexContainer {
 	display: flex;
-	justify-content: flex-start;
-	flex-flow: wrap;
-	margin: 50px auto;
-	/* background-color: bisque; */
-	width: 1035px;
+	justify-content: center;
+	flex-flow: row wrap;
+	margin: 0 auto;
+	background-color: bisque;
+	width: 80%;
 	column-gap: 5px;
 }
 
-.flashCardContainer::after {
+.flashCardFlexContainer::after {
 	content: "";
-	width: 65%;
+	width: 125px;
+}
+
+.flashCardContainer {
+	display: flex;
+	flex-flow: column;
+	/* background-color: salmon; */
 }
 
 .flashCard {
@@ -212,3 +215,49 @@ button {
 	padding: 1px;
 	width: 100px;
 }
+
+.deleteButton {
+	width: 75px;
+}
+
+.editCards {
+	width: 200px;
+	border: 1px solid black;
+	margin-bottom: 5px;
+	padding: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.editCards:hover {
+	background-color: blue;
+	color: white;
+}
+
+/* siderbar */
+
+/* .nav-sidebar {
+	background-color: beige;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.sidebar-title {
+	height: 10%;
+	border-bottom: 1px black solid;
+}
+
+.sidebar-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 90%;
+	background-color: aqua;
+}
+
+.sidebar-list li {
+	margin-bottom: 25px;
+} */

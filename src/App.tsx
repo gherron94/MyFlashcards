@@ -2,33 +2,36 @@ import { FC } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
-import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import FlashCards from "./components/FlashCards";
+import AddCards from "./components/AddCards";
+// import SideBar from "./components/SideBar";
 
 const App: FC = () => {
 	return (
 		<div className={"container"}>
 			<div className="header">
 				<header>
-					<Header />
 					<NavBar />
 				</header>
 			</div>
 			<div className="body">
+				{/* <div className="sidebar">
+					<SideBar />
+				</div> */}
 				<div className="content">
-					<div className="sidebar"></div>
 					<main>
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/flash-cards" element={<FlashCards />} />
+							<Route path="/new-card" element={<AddCards />} />
 						</Routes>
 					</main>
+					<footer className="footer">
+						<p>© 2024 Language App</p>
+					</footer>
 				</div>
 			</div>
-			<footer className="footer">
-				<p>© 2024 Language App</p>
-			</footer>
 		</div>
 	);
 };
