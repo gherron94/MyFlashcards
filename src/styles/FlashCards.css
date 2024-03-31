@@ -47,8 +47,8 @@
 	transform-style: preserve-3d;
 }
 
-.flash-card-TL,
-.flash-card-English {
+.flash-card-English,
+.flash-card-TL {
 	display: flex;
 	border-radius: 10px;
 	align-items: center;
@@ -59,12 +59,11 @@
 	backface-visibility: hidden;
 }
 
-.flash-card-TL {
+.flash-card-English {
 	background-color: rgb(0, 0, 115);
 }
 
-.flash-card-English {
-	background-color: rgb(0, 0, 115);
+.flash-card-TL {
 	background-color: rgb(230, 110, 0);
 	transform: rotateY(180deg);
 }

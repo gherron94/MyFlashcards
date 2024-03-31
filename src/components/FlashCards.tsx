@@ -3,12 +3,15 @@ import { Words } from "../types";
 import axios from "axios";
 import Cards from "./Cards";
 import AddCards from "./AddCards";
+import EditWord from "./EditWord";
 
 interface FlashCardsProps {
 	isFlipped: boolean;
 	isDeleteSelected: boolean;
 	addCard: boolean;
 	setAddCard: Dispatch<SetStateAction<boolean>>;
+	editSelected: boolean;
+	setEditSelected: Dispatch<SetStateAction<boolean>>;
 }
 
 const FlashCards: FC<FlashCardsProps> = ({
@@ -16,9 +19,14 @@ const FlashCards: FC<FlashCardsProps> = ({
 	isDeleteSelected,
 	addCard,
 	setAddCard,
+	editSelected,
+	setEditSelected,
 }) => {
 	const [wordList, setWordList] = useState<Words[]>([]);
 	const [cardsCount, setCardsCount] = useState<number>();
+	const [wordidNum, setWordIdNum] = useState<number>(0);
+	const [englishToEdit, setEnglishToEdit] = useState<string>("");
+	const [tlToEdit, setTlToEdit] = useState<string>("");
 
 	useEffect(() => {
 		axios
@@ -41,6 +49,15 @@ const FlashCards: FC<FlashCardsProps> = ({
 				</p>
 			)}
 			{addCard ? <AddCards setAddCard={setAddCard} addCard={addCard} /> : null}
+			{editSelected ? (
+				<EditWord
+					wordidNum={wordidNum}
+					tlToEdit={tlToEdit}
+					englishToEdit={englishToEdit}
+					setEditSelected={setEditSelected}
+					editSelected={editSelected}
+				/>
+			) : null}
 			{isFlipped ? (
 				<ul className="flashCardFlexContainer">
 					{wordList.map((words, index) => (
@@ -49,7 +66,15 @@ const FlashCards: FC<FlashCardsProps> = ({
 							firstCard={words.tl_word}
 							secondCard={words.english_word}
 							word_id={words.word_id}
+							wordidNum={wordidNum}
+							setWordIdNum={setWordIdNum}
 							isDeleteSelected={isDeleteSelected}
+							editSelected={editSelected}
+							setEditSelected={setEditSelected}
+							englishToEdit={englishToEdit}
+							setEnglishToEdit={setEnglishToEdit}
+							tlToEdit={tlToEdit}
+							setTlToEdit={setTlToEdit}
 						/>
 					))}
 				</ul>
@@ -60,8 +85,16 @@ const FlashCards: FC<FlashCardsProps> = ({
 							key={index}
 							firstCard={words.english_word}
 							secondCard={words.tl_word}
-							isDeleteSelected={isDeleteSelected}
 							word_id={words.word_id}
+							wordidNum={wordidNum}
+							setWordIdNum={setWordIdNum}
+							isDeleteSelected={isDeleteSelected}
+							editSelected={editSelected}
+							setEditSelected={setEditSelected}
+							englishToEdit={englishToEdit}
+							setEnglishToEdit={setEnglishToEdit}
+							tlToEdit={tlToEdit}
+							setTlToEdit={setTlToEdit}
 						/>
 					))}
 				</ul>

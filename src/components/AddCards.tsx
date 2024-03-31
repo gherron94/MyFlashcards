@@ -14,8 +14,8 @@ const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
 		event.preventDefault();
 		if (newWordEnglish && newWordTL) {
 			axios.post("https://language-app-backend.onrender.com/api/words", {
-				tl_word: newWordTL,
 				english_word: newWordEnglish,
+				tl_word: newWordTL,
 			});
 			setNewWordEnglish("");
 			setNewWordTL("");
@@ -39,16 +39,6 @@ const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
 		<div className="newWord">
 			<h3>Add New Flash Card</h3>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="targetLWord">Word in Portuguese: </label>
-				<input
-					value={newWordTL}
-					type="text"
-					onChange={handleOnChangeTarget}
-					name="targetLWord"
-					id="targetLWord"
-					placeholder="e.g. A Casa"
-				></input>
-
 				<label htmlFor="englishWord">Word in English: </label>
 				<input
 					type="text"
@@ -57,6 +47,15 @@ const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
 					name="englshWord"
 					id="englshWord"
 					placeholder="e.g. House"
+				></input>
+				<label htmlFor="targetLWord">Word in Portuguese: </label>
+				<input
+					value={newWordTL}
+					type="text"
+					onChange={handleOnChangeTarget}
+					name="targetLWord"
+					id="targetLWord"
+					placeholder="e.g. A Casa"
 				></input>
 
 				<button>Add Card</button>

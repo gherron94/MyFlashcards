@@ -11,6 +11,7 @@ const App: FC = () => {
 	const [isFlipped, SetIsFlipped] = useState<boolean>(false);
 	const [isDeleteSelected, setIsDeleteSelected] = useState<boolean>(false);
 	const [addCard, setAddCard] = useState<boolean>(false);
+	const [editSelected, setEditSelected] = useState<boolean>(false);
 
 	return (
 		<div className={"container"}>
@@ -24,6 +25,8 @@ const App: FC = () => {
 						setIsDeleteSelected={setIsDeleteSelected}
 						addCard={addCard}
 						setAddCard={setAddCard}
+						editSelected={editSelected}
+						setEditSelected={setEditSelected}
 					/>
 				</header>
 			</div>
@@ -43,6 +46,8 @@ const App: FC = () => {
 										isDeleteSelected={isDeleteSelected}
 										addCard={addCard}
 										setAddCard={setAddCard}
+										editSelected={editSelected}
+										setEditSelected={setEditSelected}
 									/>
 								}
 							/>

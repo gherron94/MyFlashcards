@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import axios from "axios";
 
 interface CardsProps {
@@ -6,22 +6,55 @@ interface CardsProps {
 	secondCard: string;
 	word_id: number;
 	isDeleteSelected: boolean;
+	editSelected: boolean;
+	setEditSelected: Dispatch<SetStateAction<boolean>>;
+	wordidNum: number;
+	setWordIdNum: Dispatch<SetStateAction<number>>;
+	englishToEdit: string;
+	setEnglishToEdit: Dispatch<SetStateAction<string>>;
+	tlToEdit: string;
+	setTlToEdit: Dispatch<SetStateAction<string>>;
 }
 
 const Cards: FC<CardsProps> = ({
+	// wordidNum,
+	setWordIdNum,
 	word_id,
 	firstCard,
 	secondCard,
 	isDeleteSelected,
+	editSelected,
+	setEditSelected,
+	setEnglishToEdit,
+	// englishToEdit,
+	// wordidNum,
+	// tlToEdit,
+	setTlToEdit,
 }) => {
 	const [flip, setFlip] = useState<Boolean>(false);
-	const handleOnClick = (
+
+	const handleOnClickDelete = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	): void => {
 		const wordId = event.currentTarget.value;
 		axios.delete(
 			`https://language-app-backend.onrender.com/api/words/${wordId}`
 		);
+	};
+
+	const handleOnClickEdit = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	): void => {
+		setWordIdNum(Number(event.currentTarget.value));
+		axios
+			.get(
+				`https://language-app-backend.onrender.com/api/words/${event.currentTarget.value}`
+			)
+			.then(({ data }) => {
+				setEnglishToEdit(data.word.english_word);
+				setTlToEdit(data.word.tl_word);
+			});
+		setEditSelected(!editSelected);
 	};
 
 	return (
@@ -35,10 +68,10 @@ const Cards: FC<CardsProps> = ({
 					}}
 				>
 					<div className="flashCardInner">
-						<div className="flash-card-TL">
+						<div className="flash-card-English">
 							<p>{firstCard}</p>
 						</div>
-						<div className="flash-card-English">
+						<div className="flash-card-TL">
 							<p>{secondCard}</p>
 						</div>
 					</div>
@@ -47,8 +80,8 @@ const Cards: FC<CardsProps> = ({
 					<div className="edit-cards">
 						<div>
 							<button
-								onClick={handleOnClick}
 								value={word_id}
+								onClick={handleOnClickEdit}
 								className="editButton"
 							>
 								Edit
@@ -56,7 +89,7 @@ const Cards: FC<CardsProps> = ({
 						</div>
 						<div>
 							<button
-								onClick={handleOnClick}
+								onClick={handleOnClickDelete}
 								value={word_id}
 								className="deleteButton"
 							>
