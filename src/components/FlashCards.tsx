@@ -1,15 +1,24 @@
-import { FC, useEffect, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { Words } from "../types";
 import axios from "axios";
 import Cards from "./Cards";
 import AddCards from "./AddCards";
 
-const FlashCards: FC = () => {
+interface FlashCardsProps {
+	isFlipped: boolean;
+	isDeleteSelected: boolean;
+	addCard: boolean;
+	setAddCard: Dispatch<SetStateAction<boolean>>;
+}
+
+const FlashCards: FC<FlashCardsProps> = ({
+	isFlipped,
+	isDeleteSelected,
+	addCard,
+	setAddCard,
+}) => {
 	const [wordList, setWordList] = useState<Words[]>([]);
 	const [cardsCount, setCardsCount] = useState<number>();
-	const [isFlipped, SetIsFlipped] = useState<boolean>(false);
-	const [isDeleteSelected, setIsDeleteSelected] = useState<boolean>(false);
-	const [addCard, setAddCard] = useState<boolean>(false);
 
 	useEffect(() => {
 		axios
@@ -22,50 +31,23 @@ const FlashCards: FC = () => {
 
 	return (
 		<>
-			<h1>My Flash Cards</h1>
 			{isFlipped ? (
-				<div
-					className="editCards"
-					onClick={() => {
-						SetIsFlipped(!isFlipped);
-					}}
-				>
-					Change to target language
-				</div>
+				<p className="welcome">
+					Welcome! You are learning {cardsCount} words in English
+				</p>
 			) : (
-				<div
-					className="editCards"
-					onClick={() => {
-						SetIsFlipped(!isFlipped);
-					}}
-				>
-					Change to English
-				</div>
+				<p className="welcome">
+					Welcome! You are learning {cardsCount} words in Portuguese
+				</p>
 			)}
-			<div
-				className="editCards"
-				onClick={() => {
-					setIsDeleteSelected(!isDeleteSelected);
-				}}
-			>
-				<p>Edit Cards</p>
-			</div>
-			<div
-				className="editCards"
-				onClick={() => {
-					setAddCard(!addCard);
-				}}
-			>
-				<p>Add Card</p>
-			</div>
 			{addCard ? <AddCards setAddCard={setAddCard} addCard={addCard} /> : null}
 			{isFlipped ? (
 				<ul className="flashCardFlexContainer">
 					{wordList.map((words, index) => (
 						<Cards
 							key={index}
-							firstCard={words.english_word}
-							secondCard={words.tl_word}
+							firstCard={words.tl_word}
+							secondCard={words.english_word}
 							word_id={words.word_id}
 							isDeleteSelected={isDeleteSelected}
 						/>
@@ -76,15 +58,14 @@ const FlashCards: FC = () => {
 					{wordList.map((words, index) => (
 						<Cards
 							key={index}
-							firstCard={words.tl_word}
-							secondCard={words.english_word}
+							firstCard={words.english_word}
+							secondCard={words.tl_word}
 							isDeleteSelected={isDeleteSelected}
 							word_id={words.word_id}
 						/>
 					))}
 				</ul>
 			)}
-			<h3 className="total">Total Flash Cards: {cardsCount}</h3>
 		</>
 	);
 };
