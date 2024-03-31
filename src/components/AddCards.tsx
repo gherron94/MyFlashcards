@@ -39,28 +39,26 @@ const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
 		<div className="newWord">
 			<h3>Add New Flash Card</h3>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="targetLWord">
-					Word in target language:
-					<input
-						value={newWordTL}
-						type="text"
-						onChange={handleOnChangeTarget}
-						name="targetLWord"
-						id="targetLWord"
-						placeholder="e.g. A Casa"
-					></input>
-				</label>
-				<label htmlFor="englishWord">
-					Word in English:
-					<input
-						type="text"
-						value={newWordEnglish}
-						onChange={handleOnChangeEnglish}
-						name="englshWord"
-						id="englshWord"
-						placeholder="e.g. House"
-					></input>
-				</label>
+				<label htmlFor="targetLWord">Word in Portuguese: </label>
+				<input
+					value={newWordTL}
+					type="text"
+					onChange={handleOnChangeTarget}
+					name="targetLWord"
+					id="targetLWord"
+					placeholder="e.g. A Casa"
+				></input>
+
+				<label htmlFor="englishWord">Word in English: </label>
+				<input
+					type="text"
+					value={newWordEnglish}
+					onChange={handleOnChangeEnglish}
+					name="englshWord"
+					id="englshWord"
+					placeholder="e.g. House"
+				></input>
+
 				<button>Add Card</button>
 			</form>
 		</div>

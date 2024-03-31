@@ -44,14 +44,25 @@ const Cards: FC<CardsProps> = ({
 					</div>
 				</div>
 				{isDeleteSelected ? (
-					<div>
-						<button
-							onClick={handleOnClick}
-							value={word_id}
-							className="deleteButton"
-						>
-							Delete card
-						</button>
+					<div className="edit-cards">
+						<div>
+							<button
+								onClick={handleOnClick}
+								value={word_id}
+								className="editButton"
+							>
+								Edit
+							</button>
+						</div>
+						<div>
+							<button
+								onClick={handleOnClick}
+								value={word_id}
+								className="deleteButton"
+							>
+								Delete
+							</button>
+						</div>
 					</div>
 				) : null}
 			</li>
