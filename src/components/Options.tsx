@@ -7,7 +7,6 @@ interface Options {
 	setIsDeleteSelected: Dispatch<SetStateAction<boolean>>;
 	addCard: boolean;
 	setAddCard: Dispatch<SetStateAction<boolean>>;
-	editSelected: boolean;
 	setEditSelected: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -18,7 +17,6 @@ const Options: FC<Options> = ({
 	isDeleteSelected,
 	setIsDeleteSelected,
 	SetIsFlipped,
-	editSelected,
 	setEditSelected,
 }) => {
 	return (

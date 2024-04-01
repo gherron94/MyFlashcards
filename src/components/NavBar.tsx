@@ -5,14 +5,11 @@ const NavBar: FC = () => {
 	return (
 		<nav>
 			<ul>
-				{/* <li>
-					<NavLink to="/">Home</NavLink>
-				</li> */}
 				<li>
-					<NavLink to="/flash-cards">MyFlashcards</NavLink>
+					<NavLink to="/home">MyFlashcards</NavLink>
 				</li>
 				<li className="currentUser">
-					<NavLink to="/"> Sign In</NavLink>
+					<NavLink to="/"> Sign out</NavLink>
 				</li>
 			</ul>
 		</nav>

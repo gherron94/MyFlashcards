@@ -1,0 +1,79 @@
+.signin-container {
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
+	width: 100vw;
+}
+
+.signin-container header {
+	background-color: rgb(0, 0, 113);
+	height: 40%;
+	display: flex;
+	flex-direction: column;
+}
+
+.sign-title {
+	height: 30%;
+}
+
+.sign-message {
+	height: 70%;
+}
+.sign-title h1 {
+	color: white;
+	font-size: 40px;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.sign-message h2 {
+	color: white;
+	font-size: 20px;
+	margin-left: 15px;
+	margin-top: 30px;
+	font-weight: 400;
+}
+
+.signin-container main {
+	display: flex;
+	flex-direction: column;
+	height: 60%;
+	background-color: black;
+	align-items: center;
+	justify-content: center;
+	row-gap: 50px;
+}
+
+.sign-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 15px;
+	width: 100%;
+}
+
+.sign-buttons button {
+	padding: 5px 25px;
+	border-radius: 7.5px;
+	border: none;
+	font-size: 20px;
+	background-color: rgb(0, 0, 163);
+	color: white;
+}
+
+.sign-buttons button:first-child {
+	background-color: rgb(0, 50, 115);
+}
+
+.sign-buttons button:last-child {
+	background-color: rgb(0, 100, 200);
+}
+
+.guest-button button {
+	padding: 5px 25px;
+	border-radius: 7.5px;
+	border: none;
+	font-size: 20px;
+	background-color: rgb(0, 0, 113);
+	color: white;
+}
