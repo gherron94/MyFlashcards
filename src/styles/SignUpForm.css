@@ -1,0 +1,50 @@
+#title,
+#description {
+	text-align: center;
+	color: rgb(0, 50, 115);
+}
+
+#title {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#survey-form {
+	width: 40%;
+	min-width: 325px;
+	margin: 25px auto;
+	border: 2px solid white;
+	border-radius: 5px;
+	background-color: rgb(0, 50, 115);
+	color: white;
+}
+
+#survey-form fieldset {
+	margin: 10px;
+	border: none;
+}
+
+#survey-form label,
+#survey-form legend {
+	display: block;
+	margin: 5px 0;
+}
+
+#survey-form input,
+#survey-form select {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#survey-form .inline {
+	width: unset;
+	vertical-align: middle;
+}
+
+#submit {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 30%;
+	height: 20px;
+}

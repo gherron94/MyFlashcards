@@ -40,7 +40,7 @@ const Wrapper: FC = () => {
 						/>
 					</main>
 					<footer className="footer">
-						<p>© 2024 Language App</p>
+						<p>© 2024 MyFlashcards</p>
 					</footer>
 				</div>
 			</div>

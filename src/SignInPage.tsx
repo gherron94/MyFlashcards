@@ -7,7 +7,7 @@ const SignInPage: FC = () => {
 			<div className="signin-container">
 				<header>
 					<div className="sign-title">
-						<h1>My Flashcards</h1>
+						<h1>MyFlashcards</h1>
 					</div>
 					<div className="sign-message">
 						<h2>
@@ -18,13 +18,14 @@ const SignInPage: FC = () => {
 				<main>
 					<div className="sign-buttons">
 						<button>Sign In</button>
-						<button>Sign Up</button>
+						<NavLink to="/sign-up" target="_blank">
+							<button>Sign Up</button>
+						</NavLink>
 					</div>
 					<div className="guest-button">
-						<button>
-							{" "}
-							<NavLink to="/home">Use as Guest</NavLink>
-						</button>
+						<NavLink to="/home">
+							<button>Use as Guest</button>
+						</NavLink>
 					</div>
 				</main>
 			</div>
