@@ -18,7 +18,7 @@ const SignInPage: FC = () => {
 				<main>
 					<div className="sign-buttons">
 						<button>Sign In</button>
-						<NavLink to="/sign-up" target="_blank">
+						<NavLink to="/sign-up">
 							<button>Sign Up</button>
 						</NavLink>
 					</div>
