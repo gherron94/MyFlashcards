@@ -1,11 +1,15 @@
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import "./styles";
 import NavBar from "./components/NavBar";
 import FlashCards from "./components/FlashCards";
 import Options from "./components/Options";
-// import SideBar from "./components/SideBar";
+import { User } from "./types";
 
-const Wrapper: FC = () => {
+interface wrapperProps {
+	setSignedInUser: Dispatch<SetStateAction<User>>;
+}
+
+const Wrapper: FC<wrapperProps> = ({ setSignedInUser }) => {
 	const [isFlipped, SetIsFlipped] = useState<boolean>(false);
 	const [isDeleteSelected, setIsDeleteSelected] = useState<boolean>(false);
 	const [addCard, setAddCard] = useState<boolean>(false);
@@ -15,7 +19,7 @@ const Wrapper: FC = () => {
 		<div className={"container"}>
 			<div className="header">
 				<header>
-					<NavBar />
+					<NavBar setSignedInUser={setSignedInUser} />
 					<Options
 						isFlipped={isFlipped}
 						SetIsFlipped={SetIsFlipped}

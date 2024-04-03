@@ -1,14 +1,24 @@
-import { FC } from "react";
+import { FC, Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router-dom";
+import { User } from "../types";
 
-const NavBar: FC = () => {
+interface NavBarProps {
+	setSignedInUser: Dispatch<SetStateAction<User>>;
+}
+
+const NavBar: FC<NavBarProps> = ({ setSignedInUser }) => {
+	function handleOnClick() {
+		setSignedInUser((currentUser) => {
+			return { ...currentUser, username: "" };
+		});
+	}
 	return (
 		<nav>
 			<ul>
 				<li>
 					<NavLink to="/home">MyFlashcards</NavLink>
 				</li>
-				<li className="currentUser">
+				<li onClick={handleOnClick} className="currentUser">
 					<NavLink to="/"> Sign out</NavLink>
 				</li>
 			</ul>
