@@ -20,7 +20,10 @@ const App: FC = () => {
 				<Routes>
 					<Route index element={<Navigate to="/sign-in" replace />} />
 					<Route path="/home" element={<Home />} />
-					<Route path="/sign-in" element={<SignInPage />} />
+					<Route
+						path="/sign-in"
+						element={<SignInPage setSignedInUser={setSignedInUser} />}
+					/>
 					<Route
 						path="/sign-up"
 						element={<SignUpForm setSignedInUser={setSignedInUser} />}

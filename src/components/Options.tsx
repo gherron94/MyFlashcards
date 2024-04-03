@@ -37,6 +37,7 @@ const Options: FC<Options> = ({
 						className="editCards"
 						onClick={() => {
 							setIsDeleteSelected(!isDeleteSelected), setEditSelected(false);
+							setAddCard(false);
 						}}
 					>
 						<p>Edit Cards</p>
@@ -47,6 +48,8 @@ const Options: FC<Options> = ({
 						className="editCards"
 						onClick={() => {
 							setAddCard(!addCard);
+							setEditSelected(false);
+							setIsDeleteSelected(false);
 						}}
 					>
 						<p>Add Card</p>

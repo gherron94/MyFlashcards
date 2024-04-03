@@ -1,7 +1,12 @@
-import { FC } from "react";
+import { FC, Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router-dom";
+import { User } from "./types";
 
-const SignInPage: FC = () => {
+interface SignInPageProps {
+	setSignedInUser: Dispatch<SetStateAction<User>>;
+}
+
+const SignInPage: FC<SignInPageProps> = ({ setSignedInUser }) => {
 	return (
 		<>
 			<div className="signin-container">
@@ -24,7 +29,15 @@ const SignInPage: FC = () => {
 					</div>
 					<div className="guest-button">
 						<NavLink to="/home">
-							<button>Use as Guest</button>
+							<button
+								onClick={() => {
+									setSignedInUser((currentUser) => {
+										return { ...currentUser, username: "Guest" };
+									});
+								}}
+							>
+								Use as Guest
+							</button>
 						</NavLink>
 					</div>
 				</main>
