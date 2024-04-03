@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import NavBar from "./NavBar";
 import { NavLink } from "react-router-dom";
+import UserContext from "../UserContext";
 
 const Home: FC = () => {
+	const signedInUser = useContext(UserContext);
 	return (
 		<>
 			<div className={"container"}>
@@ -15,6 +17,9 @@ const Home: FC = () => {
 					<div className="content">
 						<main>
 							<h1 className="home-title">Welcome to MyFlashcards</h1>
+							<h2 className="signed-in-user-home">
+								You are signed in as {signedInUser.username}
+							</h2>
 							<h2 className="home-intro">
 								Click below to see your cards and begin learning!
 							</h2>

@@ -3,3 +3,7 @@ export interface Words {
 	tl_word: string;
 	english_word: string;
 }
+
+export interface User {
+	username: string;
+}

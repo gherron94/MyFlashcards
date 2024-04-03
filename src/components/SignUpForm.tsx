@@ -1,13 +1,22 @@
-import { FC, useState } from "react";
+import { FC, useState, Dispatch, SetStateAction } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import UserContext from "../UserContext";
+import { User } from "../types";
 
-const SignUpForm: FC = () => {
+interface SignUpFormProps {
+	setSignedInUser: Dispatch<SetStateAction<User>>;
+}
+
+const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
+	// const signedInUser = useContext(UserContext);
 	const [username, setUsername] = useState<string>("");
 	// const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [age, setAge] = useState<string>("");
 	const [usernameExists, setUsernameExists] = useState<boolean>(false);
+
+	let navigate = useNavigate();
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
 		event.preventDefault();
@@ -17,22 +26,17 @@ const SignUpForm: FC = () => {
 				password: password,
 				age: Number(age),
 			})
+			.then(() => {
+				setSignedInUser((currentUser) => {
+					return { ...currentUser, username: username };
+				});
+				return navigate("/home");
+			})
 			.catch(({ response }) => {
-				if (response.data.msg === "Username already exists")
+				if (response.data.msg === "Username already exists") {
 					setUsernameExists(true);
+				}
 			});
-
-		if (!usernameExists) {
-			{
-				<NavLink to="/home"></NavLink>;
-			}
-		}
-		axios
-			.get("https://language-app-backend.onrender.com/api/users")
-			.then(({ data }) => {
-				console.log(data);
-			});
-		console.log(usernameExists);
 
 		setUsername("");
 		setPassword("");

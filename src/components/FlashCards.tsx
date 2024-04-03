@@ -1,4 +1,12 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import {
+	Dispatch,
+	FC,
+	useContext,
+	SetStateAction,
+	useEffect,
+	useState,
+} from "react";
+import UserContext from "../UserContext";
 import { Words } from "../types";
 import axios from "axios";
 import Cards from "./Cards";
@@ -22,6 +30,8 @@ const FlashCards: FC<FlashCardsProps> = ({
 	editSelected,
 	setEditSelected,
 }) => {
+	const signedInUser = useContext(UserContext);
+
 	const [wordList, setWordList] = useState<Words[]>([]);
 	const [cardsCount, setCardsCount] = useState<number>();
 	const [wordidNum, setWordIdNum] = useState<number>(0);
@@ -41,11 +51,14 @@ const FlashCards: FC<FlashCardsProps> = ({
 		<>
 			{isFlipped ? (
 				<p className="welcome">
-					Welcome! You are learning {cardsCount} words in English
+					Welcome {signedInUser.username}!<br></br>
+					<br></br>
+					You are learning {cardsCount} words in English
 				</p>
 			) : (
 				<p className="welcome">
-					Welcome! You are learning {cardsCount} words in Portuguese
+					Welcome {signedInUser.username}!<br></br>
+					<br></br> You are learning {cardsCount} words in Portuguese
 				</p>
 			)}
 			{addCard ? <AddCards setAddCard={setAddCard} addCard={addCard} /> : null}
