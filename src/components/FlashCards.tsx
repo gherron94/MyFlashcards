@@ -42,7 +42,10 @@ const FlashCards: FC<FlashCardsProps> = ({
 		axios
 			.get("https://language-app-backend.onrender.com/api/words")
 			.then(({ data }) => {
-				setWordList(data.words);
+				const filteredWords = data.words.filter((wordObj: any) => {
+					return signedInUser.username === wordObj.account_owner;
+				});
+				setWordList(filteredWords);
 			});
 		setCardsCount(wordList.length);
 	}, [wordList]);

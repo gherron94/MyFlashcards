@@ -1,5 +1,6 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState, useContext } from "react";
 import axios from "axios";
+import UserContext from "../UserContext";
 
 interface AddCardProps {
 	addCard: boolean;
@@ -7,6 +8,8 @@ interface AddCardProps {
 }
 
 const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
+	const signedInUser = useContext(UserContext);
+
 	const [newWordEnglish, setNewWordEnglish] = useState<string>("");
 	const [newWordTL, setNewWordTL] = useState<string>("");
 
@@ -16,7 +19,9 @@ const AddCards: FC<AddCardProps> = ({ setAddCard, addCard }) => {
 			axios.post("https://language-app-backend.onrender.com/api/words", {
 				english_word: newWordEnglish,
 				tl_word: newWordTL,
+				account_owner: signedInUser.username,
 			});
+
 			setNewWordEnglish("");
 			setNewWordTL("");
 			setAddCard(!addCard);

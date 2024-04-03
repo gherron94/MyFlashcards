@@ -3,49 +3,47 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User } from "../types";
 
-interface SignUpFormProps {
+interface SignInFormProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;
 }
 
-const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
+const SignInForm: FC<SignInFormProps> = ({ setSignedInUser }) => {
 	const [username, setUsername] = useState<string>("");
-	// const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [age, setAge] = useState<string>("");
-	const [usernameExists, setUsernameExists] = useState<boolean>(false);
+	const [usernameDoesNotExist, setUsernameDoesNotExist] =
+		useState<boolean>(false);
+	const [incorrectPassword, setincorrectPassword] = useState<boolean>(false);
 
 	let navigate = useNavigate();
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
 		event.preventDefault();
 		axios
-			.post("https://language-app-backend.onrender.com/api/users", {
-				username: username,
-				password: password,
-				age: Number(age),
-			})
-			.then(() => {
-				setSignedInUser((currentUser) => {
-					return { ...currentUser, username: username };
-				});
-				return navigate("/home");
+			.get(`https://language-app-backend.onrender.com/api/users/${username}`)
+			.then(({ data }) => {
+				if (data.user.password !== password) {
+					setincorrectPassword(true);
+				} else {
+					setSignedInUser((currentUser) => {
+						return { ...currentUser, username: username };
+					});
+					return navigate("/home");
+				}
 			})
 			.catch(({ response }) => {
-				if (response.data.msg === "Username already exists") {
-					setUsernameExists(true);
-				}
+				if (response.data.msg === "Username does not exist")
+					setUsernameDoesNotExist(true);
 			});
 
 		setUsername("");
 		setPassword("");
-		setAge("");
 	};
 
 	return (
 		<>
 			<header>
-				<h1 id="title">Sign up Form</h1>
-				<p id="description">Please fill out this Sign-up form</p>
+				<h1 id="title">Sign In</h1>
+				<p id="description">Please sign in with your details</p>
 			</header>
 			<main>
 				<form onSubmit={handleSubmit} id="survey-form">
@@ -56,7 +54,8 @@ const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 						<input
 							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 								setUsername(event.currentTarget.value);
-								setUsernameExists(false);
+								setUsernameDoesNotExist(false);
+								setincorrectPassword(false);
 							}}
 							value={username}
 							type="text"
@@ -70,7 +69,8 @@ const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 						<input
 							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 								setPassword(event.currentTarget.value);
-								setUsernameExists(false);
+								setUsernameDoesNotExist(false);
+								setincorrectPassword(false);
 							}}
 							value={password}
 							type="password"
@@ -78,32 +78,20 @@ const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 							placeholder="Enter your password..."
 							required
 						/>
-						<label id="number-label" htmlFor="number">
-							Age:
-						</label>
-						<input
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-								setAge(event.currentTarget.value);
-								setUsernameExists(false);
-							}}
-							value={age}
-							type="number"
-							min="18"
-							max="120"
-							id="number"
-							placeholder="Enter your age..."
-						/>
 					</fieldset>
 					<button type="submit" id="submit" name="submit">
 						Submit
 					</button>
 				</form>
-				{usernameExists ? (
-					<p className="username-error">Username already exists</p>
+				{usernameDoesNotExist ? (
+					<p className="username-error">User does not exist</p>
+				) : null}
+				{incorrectPassword ? (
+					<p className="username-error">Incorrect Password</p>
 				) : null}
 			</main>
 		</>
 	);
 };
 
-export default SignUpForm;
+export default SignInForm;

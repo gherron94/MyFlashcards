@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Wrapper from "./wrappe";
 import SignInPage from "./SignInPage";
 import SignUpForm from "./components/SignUpForm";
+import SignInForm from "./components/SignInForm";
 import UserContext from "./UserContext";
 import { User } from "./types";
 
@@ -13,7 +14,6 @@ const App: FC = () => {
 		username: "Guest",
 	});
 
-	console.log(signedInUser.username);
 	return (
 		<>
 			<UserContext.Provider value={signedInUser}>
@@ -25,7 +25,11 @@ const App: FC = () => {
 						element={<SignInPage setSignedInUser={setSignedInUser} />}
 					/>
 					<Route
-						path="/sign-up"
+						path="/sign-in-form"
+						element={<SignInForm setSignedInUser={setSignedInUser} />}
+					/>
+					<Route
+						path="/sign-up-form"
 						element={<SignUpForm setSignedInUser={setSignedInUser} />}
 					/>
 					<Route path="/flash-cards" element={<Wrapper />} />
