@@ -79,7 +79,12 @@ const SignInForm: FC<SignInFormProps> = ({ setSignedInUser }) => {
 							required
 						/>
 					</fieldset>
-					<button type="submit" id="submit" name="submit">
+					<button
+						type="submit"
+						id="submit"
+						name="submit"
+						className="form-button"
+					>
 						Submit
 					</button>
 				</form>

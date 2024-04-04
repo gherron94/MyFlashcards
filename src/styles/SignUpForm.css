@@ -53,3 +53,10 @@
 	text-align: center;
 	color: red;
 }
+
+.form-button {
+	border: none;
+	border-radius: 7.5px;
+	background-color: white;
+	color: rgb(0, 50, 115);
+}

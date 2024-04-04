@@ -94,7 +94,12 @@ const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 							placeholder="Enter your age..."
 						/>
 					</fieldset>
-					<button type="submit" id="submit" name="submit">
+					<button
+						type="submit"
+						id="submit"
+						name="submit"
+						className="form-button"
+					>
 						Submit
 					</button>
 				</form>
