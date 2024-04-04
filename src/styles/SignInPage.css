@@ -57,15 +57,14 @@
 	border-radius: 7.5px;
 	border: none;
 	font-size: 20px;
-	background-color: rgb(0, 0, 163);
 	color: white;
 }
 
-.sign-buttons button:first-child {
+.sign-in-button {
 	background-color: rgb(0, 50, 115);
 }
 
-.sign-buttons button:last-child {
+.sign-up-button {
 	background-color: rgb(0, 100, 200);
 }
 

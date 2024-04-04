@@ -23,10 +23,10 @@ const SignInPage: FC<SignInPageProps> = ({ setSignedInUser }) => {
 				<main>
 					<div className="sign-buttons">
 						<NavLink to="/sign-in-form">
-							<button>Sign In</button>
+							<button className="sign-in-button">Sign In</button>
 						</NavLink>
 						<NavLink to="/sign-up-form">
-							<button>Sign Up</button>
+							<button className="sign-up-button">Sign Up</button>
 						</NavLink>
 					</div>
 					<div className="guest-button">
