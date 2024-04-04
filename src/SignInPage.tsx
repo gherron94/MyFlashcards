@@ -1,6 +1,6 @@
 import { FC, Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router-dom";
-import { User } from "./types";
+import { User } from "./components/types";
 
 interface SignInPageProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;

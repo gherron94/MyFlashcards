@@ -8,16 +8,12 @@ interface CardsProps {
 	isDeleteSelected: boolean;
 	editSelected: boolean;
 	setEditSelected: Dispatch<SetStateAction<boolean>>;
-	wordidNum: number;
 	setWordIdNum: Dispatch<SetStateAction<number>>;
-	englishToEdit: string;
 	setEnglishToEdit: Dispatch<SetStateAction<string>>;
-	tlToEdit: string;
 	setTlToEdit: Dispatch<SetStateAction<string>>;
 }
 
 const Cards: FC<CardsProps> = ({
-	// wordidNum,
 	setWordIdNum,
 	word_id,
 	firstCard,
@@ -26,9 +22,6 @@ const Cards: FC<CardsProps> = ({
 	editSelected,
 	setEditSelected,
 	setEnglishToEdit,
-	// englishToEdit,
-	// wordidNum,
-	// tlToEdit,
 	setTlToEdit,
 }) => {
 	const [flip, setFlip] = useState<Boolean>(false);

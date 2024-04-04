@@ -1,8 +1,8 @@
 import { FC, useContext, Dispatch, SetStateAction } from "react";
 import NavBar from "./NavBar";
 import { NavLink } from "react-router-dom";
-import UserContext from "../UserContext";
-import { User } from "../types";
+import UserContext from "./UserContext";
+import { User } from "./types";
 
 interface HomeProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;

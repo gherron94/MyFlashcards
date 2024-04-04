@@ -1,7 +1,7 @@
 import { FC, useState, Dispatch, SetStateAction } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { User } from "../types";
+import { User } from "./types";
 
 interface SignUpFormProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;
@@ -9,7 +9,6 @@ interface SignUpFormProps {
 
 const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 	const [username, setUsername] = useState<string>("");
-	// const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [age, setAge] = useState<string>("");
 	const [usernameExists, setUsernameExists] = useState<boolean>(false);

@@ -1,8 +1,8 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
-import "./styles";
-import NavBar from "./components/NavBar";
-import FlashCards from "./components/FlashCards";
-import Options from "./components/Options";
+import "../styles";
+import NavBar from "./NavBar";
+import FlashCards from "./FlashCards";
+import Options from "./Options";
 import { User } from "./types";
 
 interface wrapperProps {

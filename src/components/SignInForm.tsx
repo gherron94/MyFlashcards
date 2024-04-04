@@ -1,7 +1,7 @@
 import { FC, useState, Dispatch, SetStateAction } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { User } from "../types";
+import { User } from "./types";
 
 interface SignInFormProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;

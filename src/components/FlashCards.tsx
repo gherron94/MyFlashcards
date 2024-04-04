@@ -6,8 +6,8 @@ import {
 	useEffect,
 	useState,
 } from "react";
-import UserContext from "../UserContext";
-import { Words } from "../types";
+import UserContext from "./UserContext";
+import { Words } from "./types";
 import axios from "axios";
 import Cards from "./Cards";
 import AddCards from "./AddCards";
@@ -82,14 +82,11 @@ const FlashCards: FC<FlashCardsProps> = ({
 							firstCard={words.tl_word}
 							secondCard={words.english_word}
 							word_id={words.word_id}
-							wordidNum={wordidNum}
 							setWordIdNum={setWordIdNum}
 							isDeleteSelected={isDeleteSelected}
 							editSelected={editSelected}
 							setEditSelected={setEditSelected}
-							englishToEdit={englishToEdit}
 							setEnglishToEdit={setEnglishToEdit}
-							tlToEdit={tlToEdit}
 							setTlToEdit={setTlToEdit}
 						/>
 					))}
@@ -102,14 +99,11 @@ const FlashCards: FC<FlashCardsProps> = ({
 							firstCard={words.english_word}
 							secondCard={words.tl_word}
 							word_id={words.word_id}
-							wordidNum={wordidNum}
 							setWordIdNum={setWordIdNum}
 							isDeleteSelected={isDeleteSelected}
 							editSelected={editSelected}
 							setEditSelected={setEditSelected}
-							englishToEdit={englishToEdit}
 							setEnglishToEdit={setEnglishToEdit}
-							tlToEdit={tlToEdit}
 							setTlToEdit={setTlToEdit}
 						/>
 					))}
