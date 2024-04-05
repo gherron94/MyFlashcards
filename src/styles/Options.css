@@ -30,3 +30,15 @@ a {
 	text-decoration: none;
 	color: white;
 }
+
+/* desktop */
+
+@media screen and (min-width: 600px) {
+	.options ul {
+		display: flex;
+		justify-content: center;
+		column-gap: 35px;
+		align-items: center;
+		height: 100%;
+	}
+}

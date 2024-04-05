@@ -155,3 +155,155 @@
 	color: rgb(160, 160, 160);
 	font-size: 13px;
 }
+
+/* desktop */
+
+@media screen and (min-width: 768px) {
+	.flashCardFlexContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-flow: row wrap;
+		margin: 0 auto;
+		margin-bottom: 25px;
+		column-gap: 15px;
+		/* background-color: bisque; */
+	}
+
+	.flashCardFlexContainer::after {
+		content: none;
+	}
+
+	.flashCardContainer {
+		display: flex;
+		flex-flow: column;
+		/* background-color: salmon; */
+		margin: 5px 0;
+	}
+
+	.flashCard {
+		height: 150px;
+		width: 150px;
+		background-color: transparent;
+		perspective: 1000px;
+		margin: 7.5px 0;
+		cursor: pointer;
+	}
+
+	.flashCardInner {
+		border-radius: 10px;
+		position: relative;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		transition: transform 0.85s;
+		transform-style: preserve-3d;
+	}
+
+	.flashCard:hover .flashCardInner {
+		transform: rotateY(180deg);
+	}
+
+	.flash-card-English,
+	.flash-card-TL {
+		display: flex;
+		border-radius: 10px;
+		align-items: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		-webkit-backface-visibility: hidden; /* Safari */
+		backface-visibility: hidden;
+	}
+
+	.flash-card-English {
+		background-color: rgb(0, 0, 115);
+	}
+
+	.flash-card-TL {
+		background-color: rgb(230, 110, 0);
+		transform: rotateY(180deg);
+	}
+
+	.flash-card-TL p {
+		color: white;
+		margin: 0 auto;
+		font-size: 25px;
+	}
+
+	.flash-card-English p {
+		color: white;
+		margin: 0 auto;
+		font-size: 25px;
+	}
+
+	.deleteButton,
+	.editButton {
+		padding: 6px 15px;
+		border-radius: 7.5px;
+		border: none;
+		font-size: 15px;
+		background-color: rgb(180, 180, 180);
+		color: white;
+		cursor: pointer;
+	}
+
+	.newWord {
+		display: flex;
+		justify-content: center;
+		background-color: rgb(180, 180, 180);
+		width: 375px;
+		max-width: none;
+		margin: 0 auto;
+		margin-bottom: 25px;
+		padding: 5px;
+		flex-direction: column;
+		border-radius: 5px;
+		color: white;
+		font-size: 22.5px;
+	}
+
+	.newWord form {
+		margin: 10px;
+	}
+
+	.newWord h3 {
+		margin-top: 5px;
+		text-align: center;
+	}
+
+	.newWord label {
+		display: block;
+		font-size: 17.5px;
+	}
+
+	.newWord input {
+		margin-bottom: 7.5px;
+		font-size: 15px;
+		width: 100%;
+		border: none;
+		height: 17.5px;
+		color: rgb(100, 100, 100);
+		padding-left: 5px;
+	}
+
+	.newWord button {
+		padding: 5px 10px;
+		border-radius: 7.5px;
+		border: none;
+		font-size: 15px;
+		background-color: rgb(160, 160, 160);
+		color: white;
+		display: block;
+		margin: 0 auto;
+		margin-top: 5px;
+		cursor: pointer;
+	}
+
+	.welcome {
+		text-align: center;
+		margin: 25px 0;
+		color: rgb(160, 160, 160);
+		font-size: 18px;
+	}
+}
