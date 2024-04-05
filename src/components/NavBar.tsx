@@ -15,11 +15,9 @@ const NavBar: FC<NavBarProps> = ({ setSignedInUser }) => {
 	return (
 		<nav>
 			<ul>
-				<li>
-					<NavLink to="/home">MyFlashcards</NavLink>
-				</li>
+				<li>MyFlashcards</li>
 				<li onClick={handleOnClick} className="currentUser">
-					<NavLink to="/"> Sign out</NavLink>
+					<NavLink to="/sign-in"> Sign out</NavLink>
 				</li>
 			</ul>
 		</nav>

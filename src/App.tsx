@@ -1,21 +1,22 @@
 import { FC, useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import "../styles";
-import Home from "./Home";
-import Wrapper from "./wrappe";
-import SignInPage from "../SignInPage";
-import SignUpForm from "./SignUpForm";
-import SignInForm from "./SignInForm";
-import UserContext from "./UserContext";
+import "./styles";
+import Home from "./components/Home";
+import SignInPage from "./components/SignInPage";
+import SignUpForm from "./components/SignUpForm";
+import SignInForm from "./components/SignInForm";
+import UserContext from "./components/UserContext";
 
 const App: FC = () => {
 	let user = JSON.parse(localStorage.getItem("users") || "{}");
 
-	if (!user.username) {
-		user = { username: "Guest" };
-	}
+	// if (!user.username) {
+	// 	user = { username: "Guest" };
+	// }
 
 	const [signedInUser, setSignedInUser] = useState(user);
+
+	console.log(signedInUser.username);
 
 	useEffect(() => {
 		localStorage.setItem("users", JSON.stringify(signedInUser));
@@ -28,7 +29,7 @@ const App: FC = () => {
 					<Route
 						index
 						element={
-							signedInUser.username.length ? (
+							signedInUser.username ? (
 								<Navigate to="/home" replace />
 							) : (
 								<Navigate to="/sign-in" replace />
@@ -50,10 +51,6 @@ const App: FC = () => {
 					<Route
 						path="/sign-up-form"
 						element={<SignUpForm setSignedInUser={setSignedInUser} />}
-					/>
-					<Route
-						path="/flash-cards"
-						element={<Wrapper setSignedInUser={setSignedInUser} />}
 					/>
 				</Routes>
 			</UserContext.Provider>
