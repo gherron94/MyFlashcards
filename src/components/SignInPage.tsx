@@ -1,12 +1,23 @@
-import { FC, Dispatch, SetStateAction } from "react";
-import { NavLink } from "react-router-dom";
+import { FC, Dispatch, SetStateAction, useContext, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { User } from "./types";
+import UserContext from "../components/UserContext";
 
 interface SignInPageProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;
 }
 
 const SignInPage: FC<SignInPageProps> = ({ setSignedInUser }) => {
+	const signedInUser = useContext(UserContext);
+
+	let navigate = useNavigate();
+
+	useEffect(() => {
+		if (signedInUser.username) {
+			return navigate("/home");
+		}
+	}, [signedInUser]);
+
 	return (
 		<>
 			<div className="signin-container">

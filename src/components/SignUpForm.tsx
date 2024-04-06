@@ -1,13 +1,23 @@
-import { FC, useState, Dispatch, SetStateAction } from "react";
+import {
+	FC,
+	useState,
+	Dispatch,
+	SetStateAction,
+	useContext,
+	useEffect,
+} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User } from "./types";
+import UserContext from "../components/UserContext";
 
 interface SignUpFormProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;
 }
 
-const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
+const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }): any => {
+	const signedInUser = useContext(UserContext);
+
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [age, setAge] = useState<string>("");
@@ -27,7 +37,6 @@ const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 				setSignedInUser((currentUser) => {
 					return { ...currentUser, username: username };
 				});
-				return navigate("/home");
 			})
 			.catch(({ response }) => {
 				if (response.data.msg === "Username already exists") {
@@ -39,6 +48,12 @@ const SignUpForm: FC<SignUpFormProps> = ({ setSignedInUser }) => {
 		setPassword("");
 		setAge("");
 	};
+
+	useEffect(() => {
+		if (signedInUser.username) {
+			return navigate("/home");
+		}
+	}, [signedInUser]);
 
 	return (
 		<>

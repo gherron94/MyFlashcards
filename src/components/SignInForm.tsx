@@ -1,13 +1,23 @@
-import { FC, useState, Dispatch, SetStateAction } from "react";
+import {
+	FC,
+	useState,
+	Dispatch,
+	SetStateAction,
+	useEffect,
+	useContext,
+} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User } from "./types";
+import UserContext from "./UserContext";
 
 interface SignInFormProps {
 	setSignedInUser: Dispatch<SetStateAction<User>>;
 }
 
 const SignInForm: FC<SignInFormProps> = ({ setSignedInUser }) => {
+	const signedInUser = useContext(UserContext);
+
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [usernameDoesNotExist, setUsernameDoesNotExist] =
@@ -27,7 +37,6 @@ const SignInForm: FC<SignInFormProps> = ({ setSignedInUser }) => {
 					setSignedInUser((currentUser) => {
 						return { ...currentUser, username: username };
 					});
-					return navigate("/home");
 				}
 			})
 			.catch(({ response }) => {
@@ -38,6 +47,11 @@ const SignInForm: FC<SignInFormProps> = ({ setSignedInUser }) => {
 		setUsername("");
 		setPassword("");
 	};
+	useEffect(() => {
+		if (signedInUser.username) {
+			return navigate("/home");
+		}
+	}, [signedInUser]);
 
 	return (
 		<>
