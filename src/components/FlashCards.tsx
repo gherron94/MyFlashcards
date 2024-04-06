@@ -55,7 +55,7 @@ const FlashCards: FC<FlashCardsProps> = ({
 	return (
 		<>
 			<p className="welcome">Welcome {signedInUser.username}!</p>
-			{isLoading ? <div className="welcome">Loading Cards</div> : null}
+			{isLoading ? <div className="welcome">Loading All Cards</div> : null}
 			{isFlipped ? (
 				<p className="welcome">
 					You are learning {cardsCount} words in English
