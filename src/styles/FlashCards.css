@@ -200,10 +200,6 @@
 		transform-style: preserve-3d;
 	}
 
-	.flashCard:hover .flashCardInner {
-		transform: rotateY(180deg);
-	}
-
 	.flash-card-English,
 	.flash-card-TL {
 		display: flex;
@@ -305,5 +301,11 @@
 		margin: 25px 0;
 		color: rgb(160, 160, 160);
 		font-size: 18px;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	.flashCard:hover .flashCardInner {
+		transform: rotateY(180deg);
 	}
 }
