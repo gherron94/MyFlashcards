@@ -10,13 +10,7 @@ import UserContext from "./components/UserContext";
 const App: FC = () => {
 	let user = JSON.parse(localStorage.getItem("users") || "{}");
 
-	// if (!user.username) {
-	// 	user = { username: "Guest" };
-	// }
-
 	const [signedInUser, setSignedInUser] = useState(user);
-
-	console.log(signedInUser.username);
 
 	useEffect(() => {
 		localStorage.setItem("users", JSON.stringify(signedInUser));

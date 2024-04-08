@@ -65,9 +65,15 @@ const FlashCards: FC<FlashCardsProps> = ({
 			{isLoading ? (
 				<div className="loading">Loading Cards...</div>
 			) : (
-				<p className="welcome">
-					You are learning {cardsCount} words in {currentLanguage}
-				</p>
+				<div>
+					{" "}
+					<p className="welcome">
+						You are learning {cardsCount} words in {currentLanguage}
+					</p>
+					{!wordList.length ? (
+						<p className="welcome">Click add Card to begin learning!</p>
+					) : null}
+				</div>
 			)}
 
 			{addCard ? <AddCards setAddCard={setAddCard} addCard={addCard} /> : null}
