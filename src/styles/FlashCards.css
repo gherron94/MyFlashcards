@@ -156,6 +156,18 @@
 	font-size: 13px;
 }
 
+.loading {
+	text-align: center;
+	margin: 50px auto;
+	color: rgb(160, 160, 160);
+	font-size: 20px;
+	border: double rgb(0, 0, 115) 5px;
+	border-radius: 10px;
+	width: 55%;
+	max-width: 300px;
+	padding: 5px 10px;
+}
+
 /* desktop */
 
 @media screen and (min-width: 768px) {
