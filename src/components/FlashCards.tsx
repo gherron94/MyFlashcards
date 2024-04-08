@@ -38,6 +38,7 @@ const FlashCards: FC<FlashCardsProps> = ({
 	const [englishToEdit, setEnglishToEdit] = useState<string>("");
 	const [tlToEdit, setTlToEdit] = useState<string>("");
 	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [currentLanguage, setCurrentLanguage] = useState<string>("");
 
 	useEffect(() => {
 		axios
@@ -52,18 +53,20 @@ const FlashCards: FC<FlashCardsProps> = ({
 		setCardsCount(wordList.length);
 	}, [wordList]);
 
+	useEffect(() => {
+		isFlipped
+			? setCurrentLanguage("English")
+			: setCurrentLanguage("Portuguese");
+	});
+
 	return (
 		<>
 			<p className="welcome">Welcome {signedInUser.username}!</p>
-			{isLoading ? <div className="welcome">Loading All Cards</div> : null}
-			{isFlipped ? (
-				<p className="welcome">
-					You are learning {cardsCount} words in English
-				</p>
+			{isLoading ? (
+				<div className="welcome">Loading All Cards</div>
 			) : (
 				<p className="welcome">
-					{" "}
-					You are learning {cardsCount} words in Portuguese
+					You are learning {cardsCount} words in {currentLanguage}
 				</p>
 			)}
 
