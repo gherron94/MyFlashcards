@@ -71,7 +71,7 @@ const FlashCards: FC<FlashCardsProps> = ({
 						You are learning {cardsCount} words in {currentLanguage}
 					</p>
 					{!wordList.length ? (
-						<p className="welcome">Click add Card to begin learning!</p>
+						<p className="welcome">Add a new card to begin learning!</p>
 					) : null}
 				</div>
 			)}
